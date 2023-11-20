@@ -1,0 +1,33 @@
+.common-form {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    margin: 20px;
+    padding: 25px;
+    width: 300px;
+    border: 1px solid #91eae4;
+    border-radius: 5px;
+    background: #91eae4;
+    background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #5dc7c0, #6f8dc4, #5454a0);
+}
+.common-form label {
+    margin-bottom: 10px;
+    font-weight: 800;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #042128;
+}
+
+.common-form input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+
+/* .user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} */
