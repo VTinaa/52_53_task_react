@@ -165,7 +165,7 @@ const RegistrationForm = () => {
                     <button className='animal' type='button' onClick={onAddAnimals}>Add Animals</button>
                 </form>
                 {/* <UserCard /> */}
-                <div className=".animals-list">
+                <div className="animals-list">
                     {animals.map((pet, index) => {
                         const { animal, breed, photo } = pet;
                         return (<UserCard key={index} animal={animal} breed={breed} photo={photo} />)

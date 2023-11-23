@@ -42,7 +42,7 @@ p {
 .d-flex {
     display: flex;
     justify-content: start;
-
+    /* flex-direction: row; */
 }
 .animal {
     background: #91eae4;
