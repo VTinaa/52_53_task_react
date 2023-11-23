@@ -1,7 +1,7 @@
 const FooterItem = (props) => {
 
     const { text, isLowercaseText} = props;
-    console.log(props);
+    // console.log(props);
 
     // let textToRender;
     

@@ -36,8 +36,26 @@ p {
 	color: tomato;
 	font-weight: 500;
 }
-/* .user-list {
+
+
+
+.d-flex {
     display: flex;
-    flex-direction: column;
+    justify-content: start;
+
+}
+.animal {
+    background: #91eae4;
+    background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #e25891, #a35bd3, rgb(100, 18, 120));
+}
+.animals-list {
+    display: flex;
+    flex-direction: row;
     gap: 20px;
-} */
+}
+
+img {
+    width: 100px;
+    height: 90px;
+}

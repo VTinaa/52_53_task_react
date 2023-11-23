@@ -2,7 +2,7 @@ import './navigationItem.css';
 
 const NavigationItem = (props) => {
     const { text, isUppercaseText, description, shoulRenderDescription } = props;
-    console.log(props);
+    // console.log(props);
 
 
     {/* way2 */}
