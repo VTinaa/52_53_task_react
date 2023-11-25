@@ -1,7 +1,34 @@
 import { useState } from 'react';
 import Input from '../Input';
 import UserCard from '../UserCard';
+
+import { v4 as uuidv4 } from 'uuid';
+
 import './registrationForm.css';
+
+//////task3
+const DEFAULT_ANIMAL = [
+    {
+        animal: 'Cat',
+        breed: 'Sphynx',
+        photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Sphynx_cat%2C_lit_from_one_side.jpg/1280px-Sphynx_cat%2C_lit_from_one_side.jpg',
+        id: uuidv4(),
+    },
+    {
+        animal: 'Dog',
+        breed: 'Labrador',
+        photo: 'https://img.freepik.com/premium-photo/portrait-of-a-labrador-retriever-dog-on-an-isolated-black-background-the-picture-was-taken-in-a-photo-studio_259162-158.jpg',
+        id: uuidv4(),
+    },
+    {
+        animal: 'Dog',
+        breed: 'Pitbull',
+        photo: 'https://animals.pibig.info/uploads/posts/2023-09/1695682754_animals-pibig-info-p-pitbul-chernii-shchenok-oboi-5.jpg',
+        id: uuidv4(),
+    },
+];
+///////
+
 const RegistrationForm = () => {
 
 
@@ -72,8 +99,9 @@ const RegistrationForm = () => {
 
 
     ///////////////////task 2
-    const [animals, setAnimals] = useState([]);
-
+    const [animals, setAnimals] = useState(DEFAULT_ANIMAL);
+    // console.log(DEFAULT_ANIMAL)
+    const [isEditMode, setIsEditMode] = useState(false);
     const [animal, setAnimal] = useState();
     const [breed, setBreed] = useState();
     const [photo, setPhoto] = useState('');
@@ -83,6 +111,7 @@ const RegistrationForm = () => {
             animal,
             breed,
             photo,
+            id: uuidv4(),
         };
         setAnimals([...animals, pet])
         // setAnimal([pet])
@@ -102,6 +131,61 @@ const RegistrationForm = () => {
     const onGetPhoto = (value) => {
         setPhoto(value)
     };
+
+    // Видаляэмо карточку
+    const onDeleteAnimalHandler = (id) => {
+        console.log(id)
+        // setAnimals(animals.filter((pet) => pet.id !== id ))
+        const filterAnimals = animals.filter((pet) => pet.id !== id);
+        setAnimals(filterAnimals)
+    };
+    // Збер!гаэмо карточку
+    const onUpdateAnimalsHandler = (id) => {
+        // console.log(id)
+        const currentAnimal = animals.filter((pet) => pet.id === id)[0];
+        // setAnimals(currentAnimals)
+
+        //way2
+        // const currentAnimal = animals.find ((pet) => pet.id === id);
+        // if ( currentAnimal ) {
+        //     const { animal, breed, photo } = currentAnimal;
+        //     setAnimal(animal);
+        //     setBreed(breed);
+        //     setPhoto(photo);
+        // }
+        //way3
+        // const currentAnimal = animals.filter((pet) => pet.id === id)[0];
+        // if (currentAnimal.length > 0) {
+        //     const { animal, breed, photo } = currentAnimal[0];
+        //     setAnimal(animal);
+        //     setBreed(breed);
+        //     setPhoto(photo);
+        // }
+        //
+
+        setAnimal(currentAnimal.animal);
+        setBreed(currentAnimal.breed);
+        setPhoto(currentAnimal.photo);
+        setIsEditMode(true)
+    }
+    const onSaveAnimal = () => {
+        // // const updatedAnimals = animals.map((pet) => {
+        //     if (pet.id === currentAnimal.id) {
+
+        //         return {
+        //             ...pet,
+        //             animal,
+        //             breed,
+        //             photo,
+        //         };
+        //     }
+        //     // return pet;
+        // // });
+        setAnimal('');
+        setBreed('');
+        setPhoto('');
+        setIsEditMode(false)
+    }
 
     return (
         <div>
@@ -135,7 +219,7 @@ const RegistrationForm = () => {
                 // error={password && password.trim() === '' && 'Будь ласка, заповніть Password поле'} 
                 />
 
-                <button type='submit'>Sign Up</button>
+                <button className='form-button' type='submit'>Sign Up</button>
                 {error && <p>{error}</p>}
             </form>
 
@@ -162,13 +246,28 @@ const RegistrationForm = () => {
                         value={photo}
 
                     />
-                    <button className='animal' type='button' onClick={onAddAnimals}>Add Animals</button>
+                    {
+                        isEditMode ? (
+                            <button className='animal' type='button' onClick={onSaveAnimal}>Save Animals</button>
+                        ) : (
+                            <button className='animal' type='button' onClick={onAddAnimals}>Add Animals</button>
+                        )
+                    }
+
                 </form>
                 {/* <UserCard /> */}
                 <div className="animals-list">
                     {animals.map((pet, index) => {
-                        const { animal, breed, photo } = pet;
-                        return (<UserCard key={index} animal={animal} breed={breed} photo={photo} />)
+                        const { animal, breed, photo, id } = pet;
+                        return (<UserCard
+                            key={index}
+                            animal={animal}
+                            breed={breed}
+                            photo={photo}
+                            id={id}
+                            onClickDeleteBtn={onDeleteAnimalHandler}
+                            onClickUpdateBtn={onUpdateAnimalsHandler}
+                        />)
                     })}
                     {/* <img src={photo} alt="photo" /> */}
                     {/* imageUrl */}
