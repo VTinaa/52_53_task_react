@@ -106,6 +106,8 @@ const RegistrationForm = () => {
     const [breed, setBreed] = useState();
     const [photo, setPhoto] = useState('');
 
+    const [currentAnimal, setCurrentAnimal] = useState(null);
+
     const onAddAnimals = () => {
         const pet = {
             animal,
@@ -132,20 +134,32 @@ const RegistrationForm = () => {
         setPhoto(value)
     };
 
-    // Видаляэмо карточку
+    // Удаляем карточку
     const onDeleteAnimalHandler = (id) => {
         console.log(id)
         // setAnimals(animals.filter((pet) => pet.id !== id ))
         const filterAnimals = animals.filter((pet) => pet.id !== id);
         setAnimals(filterAnimals)
     };
-    // Збер!гаэмо карточку
+    // Сохраняем карточку
     const onUpdateAnimalsHandler = (id) => {
         // console.log(id)
-        const currentAnimal = animals.filter((pet) => pet.id === id)[0];
-        // setAnimals(currentAnimals)
+        const currentAnimal = animals.find((pet) => pet.id === id);
+        setAnimal(currentAnimal.animal);
+        setBreed(currentAnimal.breed);
+        setPhoto(currentAnimal.photo);
+        setIsEditMode(true);
+        setCurrentAnimal(currentAnimal);
 
         //way2
+        // const currentAnimal = animals.filter((pet) => pet.id === id)[0];
+        // // setAnimals(currentAnimals)
+        // setAnimal(currentAnimal.animal);
+        // setBreed(currentAnimal.breed);
+        // setPhoto(currentAnimal.photo);
+        // setIsEditMode(true)
+
+        //way3
         // const currentAnimal = animals.find ((pet) => pet.id === id);
         // if ( currentAnimal ) {
         //     const { animal, breed, photo } = currentAnimal;
@@ -153,7 +167,10 @@ const RegistrationForm = () => {
         //     setBreed(breed);
         //     setPhoto(photo);
         // }
-        //way3
+        // setIsEditMode(true)
+        // setCurrentAnimal(currentAnimal);
+
+        //way4
         // const currentAnimal = animals.filter((pet) => pet.id === id)[0];
         // if (currentAnimal.length > 0) {
         //     const { animal, breed, photo } = currentAnimal[0];
@@ -163,28 +180,33 @@ const RegistrationForm = () => {
         // }
         //
 
-        setAnimal(currentAnimal.animal);
-        setBreed(currentAnimal.breed);
-        setPhoto(currentAnimal.photo);
-        setIsEditMode(true)
+
     }
     const onSaveAnimal = () => {
-        // // const updatedAnimals = animals.map((pet) => {
-        //     if (pet.id === currentAnimal.id) {
 
-        //         return {
-        //             ...pet,
-        //             animal,
-        //             breed,
-        //             photo,
-        //         };
-        //     }
-        //     // return pet;
-        // // });
+        // Если какое-то из полей пустое -> выходим с функции(не изменяем карточку)
+        if (!currentAnimal || !animal || !breed || !photo) {
+            return;
+        }
+        // Создаем обновленный массив с изменениями в текущей карточке
+        const updatedAnimals = animals.map((pet) => {
+            if (pet.id === currentAnimal.id) {
+                return {
+                    ...pet,
+                    animal,
+                    breed,
+                    photo,
+                };
+            }
+            return pet;
+        });
+        setAnimals(updatedAnimals);
         setAnimal('');
         setBreed('');
         setPhoto('');
         setIsEditMode(false)
+        setCurrentAnimal(null);
+
     }
 
     return (
