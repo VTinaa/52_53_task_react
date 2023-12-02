@@ -4,13 +4,14 @@
     justify-content: space-around;
     color: silver;
     font-weight: 700;
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    padding-top: 20px;
     padding-bottom: 20px;
     background-color: rgb(75, 73, 73);
 }
 
 header{
     background-color: rgb(75, 73, 73);
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     color: rgb(193, 193, 195);
 }

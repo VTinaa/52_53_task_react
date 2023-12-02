@@ -1,6 +1,11 @@
 // import { Fragment } from "react";
-import './Header.css'
 import NavigationItem from "../NavigationItem";
+
+import { useContext } from "react";
+import { UsersContext } from "../../App";
+
+import './Header.css'
+
 
 // const Header = () => {
 
@@ -43,6 +48,8 @@ import NavigationItem from "../NavigationItem";
 
 const Header = () => {
 
+    const { data } = useContext(UsersContext);
+
     const navElements = [
         {
             text: 'First',
@@ -59,10 +66,10 @@ const Header = () => {
             isUppercasetext: true,
             description: "second description",
         },
-        {
-            text: 'samsung',
-            isUppercasetext: true,
-        },
+        // {
+        //     text: 'samsung',
+        //     isUppercasetext: true,
+        // },
     ];
     //    console.log(undefined && "Hello" )
 
@@ -81,8 +88,10 @@ const Header = () => {
                         )
                     })
                 }
+            {/* <div>Animal Caunt: {data} </div> */}
+            <div>Max. Characters: {data} </div>
             </div>
-            <NavigationItem text='header' isUppercasetext={false} />
+            {/* <NavigationItem text='header' isUppercasetext={false} /> */}
         </header>);
 }
 

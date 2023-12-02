@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import classNames from 'classnames';
+import { isEmpty } from 'lodash';
+
 import Input from '../Input';
 import UserCard from '../UserCard';
 
+import { useState, useContext } from 'react';
+import { UsersContext } from '../../App';
+
 import { v4 as uuidv4 } from 'uuid';
 
-import './registrationForm.css';
+import styles from './registrationForm.module.css';
 
 //////task3
 const DEFAULT_ANIMAL = [
@@ -24,6 +29,12 @@ const DEFAULT_ANIMAL = [
         animal: 'Dog',
         breed: 'Pitbull',
         photo: 'https://animals.pibig.info/uploads/posts/2023-09/1695682754_animals-pibig-info-p-pitbul-chernii-shchenok-oboi-5.jpg',
+        id: uuidv4(),
+    },
+    {
+        animal: 'Hamster',
+        breed: 'Roborovski',
+        photo: 'https://img.freepik.com/premium-photo/a-hamster-sits-on-a-black-background_839976-1330.jpg',
         id: uuidv4(),
     },
 ];
@@ -99,9 +110,16 @@ const RegistrationForm = () => {
 
 
     ///////////////////task 2
+
+    const { changeFunction } = useContext(UsersContext);
+    // console.log("User Count", contextData)
+
     const [animals, setAnimals] = useState(DEFAULT_ANIMAL);
     // console.log(DEFAULT_ANIMAL)
     const [isEditMode, setIsEditMode] = useState(false);
+    
+    // changeFunction(animals.length);
+
     const [animal, setAnimal] = useState();
     const [breed, setBreed] = useState();
     const [photo, setPhoto] = useState('');
@@ -122,6 +140,10 @@ const RegistrationForm = () => {
         setPhoto('');
     }
     console.log(animals)
+
+    // використаняя styles className
+    const cssClassName = classNames(styles["common-form"], styles["animal"]);
+    // або className={`${styles["common-form"]} ${styles["animal"]}`}
 
     const onGetAnimal = (value) => {
         setAnimal(value)
@@ -209,9 +231,16 @@ const RegistrationForm = () => {
 
     }
 
+    // Ищем у кого максимальное количество букв
+    const animalMaxCharacters = animals.reduce((prev, current) =>
+        prev.animal.length > current.animal.length ? prev : current
+    );
+
+    changeFunction(animalMaxCharacters.animal);
+
     return (
         <div>
-            <form onSubmit={handleSubmit} className="common-form">
+            <form onSubmit={handleSubmit} className={styles["common-form"]}>
                 <Input label="Name: "
                     placeholder="Enter Your Name"
                     onChangeFunction={onGetName}
@@ -241,12 +270,12 @@ const RegistrationForm = () => {
                 // error={password && password.trim() === '' && 'Будь ласка, заповніть Password поле'} 
                 />
 
-                <button className='form-button' type='submit'>Sign Up</button>
+                <button className={styles["form-button"]} type='submit'>Sign Up</button>
                 {error && <p>{error}</p>}
             </form>
 
-            <div className='d-flex'>
-                <form className="common-form animal">
+            <div className={styles["d-flex"]}>
+                <form className={cssClassName}>
                     <Input label="Animal: "
                         placeholder="Enter Your Animal"
                         onChangeFunction={onGetAnimal}
@@ -270,15 +299,15 @@ const RegistrationForm = () => {
                     />
                     {
                         isEditMode ? (
-                            <button className='animal' type='button' onClick={onSaveAnimal}>Save Animals</button>
+                            <button className={styles["animal"]} type='button' onClick={onSaveAnimal}>Save Animals</button>
                         ) : (
-                            <button className='animal' type='button' onClick={onAddAnimals}>Add Animals</button>
+                            <button className={styles["animal"]} type='button' onClick={onAddAnimals}>Add Animals</button>
                         )
                     }
 
                 </form>
                 {/* <UserCard /> */}
-                <div className="animals-list">
+                <div className={styles["animals-list"]}>
                     {animals.map((pet, index) => {
                         const { animal, breed, photo, id } = pet;
                         return (<UserCard

@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import RegistrationForm from "../RegisrtationForm";
+import "./main.css";
 
 
 const Main = () => {
@@ -42,7 +43,7 @@ const Main = () => {
 
 
     return (
-        <div> 
+        <div className="main">
             {/* <button onClick={onButtonClickHandler} type="button"> Button </button>
             <div> {text} </div>
 
@@ -57,8 +58,10 @@ const Main = () => {
             <input type="number" onChange={(event) => onChangeSecondInputHandler(event.target.value)}/>
             <div>{ result }</div>
             <button onClick={onResetResult} type="button">Reset Result</button> */}
+            <div className="main-wrapper">
 
-            <RegistrationForm />
+                <RegistrationForm />
+            </div>
 
         </div>
     )
