@@ -110,7 +110,7 @@ const RegistrationForm = () => {
 
 
     ///////////////////task 2
-
+    //task4 Max.Characters 
     const { changeFunction } = useContext(UsersContext);
     // console.log("User Count", contextData)
 
@@ -118,6 +118,7 @@ const RegistrationForm = () => {
     // console.log(DEFAULT_ANIMAL)
     const [isEditMode, setIsEditMode] = useState(false);
     
+    ////task4 Max.Characters 
     // changeFunction(animals.length);
 
     const [animal, setAnimal] = useState();
@@ -231,6 +232,7 @@ const RegistrationForm = () => {
 
     }
 
+    //task4 Max.Characters 
     // Ищем у кого максимальное количество букв
     const animalMaxCharacters = animals.reduce((prev, current) =>
         prev.animal.length > current.animal.length ? prev : current
