@@ -1,0 +1,11 @@
+.common {
+    height: 100%;
+}
+
+.coctail-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 50px;
+}
