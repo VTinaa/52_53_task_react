@@ -235,7 +235,7 @@ const RegistrationForm = () => {
     //task4 Max.Characters 
     // Ищем у кого максимальное количество букв
     const animalMaxCharacters = animals.reduce((prev, current) =>
-        prev.animal.length > current.animal.length ? prev : current
+        prev?.animal?.length > current?.animal?.length ? prev : current
     );
 
     changeFunction(animalMaxCharacters.animal);
