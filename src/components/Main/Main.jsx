@@ -2,6 +2,8 @@
 import RegistrationForm from "../RegisrtationForm";
 import Coctails from "../Coctails";
 import "./main.css";
+// import RefInput from "../RefInput/RefInput";
+import Modal from "../Modal";
 
 
 const Main = () => {
@@ -11,9 +13,10 @@ const Main = () => {
         <div className="main">
             
             <div className="main-wrapper">
-
+                {/* <RefInput /> */}
                 <RegistrationForm />
                 <Coctails />
+                <Modal />
             </div>
 
         </div>

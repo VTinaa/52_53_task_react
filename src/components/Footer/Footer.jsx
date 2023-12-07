@@ -11,10 +11,10 @@ const Footer = () => {
         <footer>
             {/* <FooterItem text='footer' isLowercaseText={true} /> */}
             <div className='common-footer'>
-                <FooterItem text='First elem' isLowercaseText={true} />
-                <FooterItem text='Second elem' isLowercaseText={true} />
-                <FooterItem text='Third elem' isLowercaseText={false} />
-                <FooterItem text='Fourth elem' isLowercaseText={false} />
+                <FooterItem text='Feedback' isLowercaseText={true} />
+                <FooterItem text='about Us' isLowercaseText={true} />
+                <FooterItem text='Contacts' isLowercaseText={false} />
+                <FooterItem text='Privacy Policy' isLowercaseText={false} />
                 {/* <div>Total User Count: {data}</div> */}
                 <div>Max. Characters: {data}</div>
             </div>

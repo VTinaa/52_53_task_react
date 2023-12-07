@@ -33,7 +33,7 @@ const Coctails = () => {
     }, [])
 
     return (
-        <>
+        <div>
             <QueryLoader fetching={fetching} error={fetchError}>
                 <div className={styles['coctail-list']}>
                     {coctails.map(({ strDrink, strDrinkThumb,idDrink }) => {
@@ -51,7 +51,7 @@ const Coctails = () => {
                 <div>Hello</div>
                 <p>Lorem ipsum dolor sit amet.</p>
             </BorderWrapper> */}
-        </>
+        </div>
     )
 };
 
