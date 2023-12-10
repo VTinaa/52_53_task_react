@@ -11,6 +11,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import styles from './registrationForm.module.css';
 
+import { useNavigate } from 'react-router-dom';
+import { HOME_PATH } from '../../constants/routes-links';
+
 //////task3
 const DEFAULT_ANIMAL = [
     {
@@ -113,6 +116,8 @@ const RegistrationForm = () => {
     //task4 Max.Characters 
     const { changeFunction } = useContext(UsersContext);
     // console.log("User Count", contextData)
+
+    const navigator = useNavigate();
 
     const [animals, setAnimals] = useState(DEFAULT_ANIMAL);
     // console.log(DEFAULT_ANIMAL)
@@ -240,8 +245,12 @@ const RegistrationForm = () => {
 
     changeFunction(animalMaxCharacters.animal);
 
+    if (animals.length > 5){
+        navigator(HOME_PATH);
+    }
+
     return (
-        <div>
+        <div className={styles["bgc"]}>
             <form onSubmit={handleSubmit} className={styles["common-form"]}>
                 <Input label="Name: "
                     placeholder="Enter Your Name"
@@ -306,6 +315,7 @@ const RegistrationForm = () => {
                             <button className={styles["animal"]} type='button' onClick={onAddAnimals}>Add Animals</button>
                         )
                     }
+                    <button className={styles["animal"]} type='button' onClick={() => {navigator(HOME_PATH)}}>Link to homepage</button>
 
                 </form>
                 {/* <UserCard /> */}

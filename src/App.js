@@ -11,6 +11,14 @@ import Coctails from './components/Coctails';
 import Blog from './components/Blog/Blog';
 import Categories from './components/Categories/Categories';
 import Contacts from './components/Contacts/Contacts';
+import RegistrationForm from './components/RegisrtationForm';
+import Products from './components/Products/Products';
+import SingleUserPage from './components/SingleUserPage';
+
+import NotFoundPage from './components/NotFoundPage';
+
+
+import { BLOG_PATH, CATEGORIES_PATH, COCTAILS_PATH, CONTACTS_PATH, HOME_PATH, NOT_FOUND_PATH, PRODUCTS_PATH, REGISTRATION_PATH, SINGLE_USER_PATH } from './constants/routes-links';
 
 
 export const UsersContext = createContext();
@@ -23,13 +31,20 @@ const App = () => {
       <div className="app">
         <Header />
         <Routes>
-          <Route path='/' element={<HomePage />}/>
-          <Route path='/coctails' element={<Coctails />}/>
-          <Route path='/blog' element={<Blog />}/>
-          <Route path='/categories' element={<Categories />}/>
-          <Route path='/contacts' element={<Contacts />}/>
+          <Route path={HOME_PATH} element={<HomePage />}/>
+          <Route path={REGISTRATION_PATH} element={<RegistrationForm />}/>
+          <Route path={COCTAILS_PATH} element={<Coctails />}/>
+          <Route path={PRODUCTS_PATH} element={<Products />}/>
+          <Route path={BLOG_PATH} element={<Blog />}/>
+          <Route path={CATEGORIES_PATH} element={<Categories />}/>
+          <Route path={CONTACTS_PATH} element={<Contacts />}/>
+
+          <Route path={SINGLE_USER_PATH} element={<SingleUserPage />}/>
+
+          <Route path={NOT_FOUND_PATH} element={<NotFoundPage />}/>
+
         </Routes>
-        <Main />
+        {/* <Main /> */}
         <Footer />
       </div>
     </UsersContext.Provider>

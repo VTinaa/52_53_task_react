@@ -1,6 +1,8 @@
+import styles from "./categories.module.css"
+
 const Categories = () => {
     return (
-        <div>Categories</div>
+        <div className={styles["common"]}>Categories</div>
     )
 };
 

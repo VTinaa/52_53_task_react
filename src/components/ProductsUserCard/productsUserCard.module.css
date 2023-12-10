@@ -1,0 +1,31 @@
+.common {
+    border: 1px solid silver;
+    width: 220px;
+    height: 155px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    /* margin-bottom: 20px; */
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    /* box-sizing: border-box; */
+}
+
+/* .common + .common {
+    margin-bottom: 0;
+} */
+
+.common:hover {
+    color: silver;
+    border: 1px solid rgb(0, 0, 0);
+    /* font-weight: 700; */
+    /* background-color: #c2bcbc; */
+    /* background-color: rgb(185, 226, 248);
+    border: #000;
+    filter: drop-shadow(0 0 2px rgba(57, 210, 234, 0.9)) drop-shadow(0 0 4px rgba(57, 210, 234, .4)) drop-shadow(0 0 1rem rgba(57, 210, 234, .3)) drop-shadow(0 0 4rem rgba(57, 210, 234, .1));
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important; */
+}

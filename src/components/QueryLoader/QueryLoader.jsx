@@ -4,7 +4,7 @@ const QueryLoader = (props) => {
     const { children, error, fetching } = props;
     return (
         <>
-            <div className={styles['common']}>
+            <div className={styles['common-loa']}>
                 <div>{fetching && 'Data is loading ...'}</div>
                 <div>{error && `Opps, we have error: ${error}`}</div>
             </div>

@@ -5,6 +5,16 @@ import { useContext } from "react";
 import { UsersContext } from "../../App";
 
 import './Header.css'
+import { Link } from "react-router-dom";
+import { 
+    BLOG_PATH, 
+    CATEGORIES_PATH, 
+    COCTAILS_PATH, 
+    CONTACTS_PATH, 
+    HOME_PATH, 
+    PRODUCTS_PATH, 
+    REGISTRATION_PATH 
+} from "../../constants/routes-links";
 
 
 // const Header = () => {
@@ -72,11 +82,20 @@ const Header = () => {
         // },
     ];
     //    console.log(undefined && "Hello" )
+    const someParam = 'hello_param'
 
     return (
         <header>
             <div className='common-header'>
-                {
+                <Link to={HOME_PATH}>Home Page</Link>
+                <Link to={REGISTRATION_PATH}>Registration Form</Link>
+                <Link to={COCTAILS_PATH}>Coctails</Link>
+                {/* <Link to={PRODUCTS}>Products</Link> */}
+                <Link to={PRODUCTS_PATH}>Products</Link>
+                <Link to={BLOG_PATH}>Blog</Link>
+                <Link to={CATEGORIES_PATH}>Categories</Link>
+                <Link to={`/contacts/${someParam}`}>Contacts</Link>
+                {/* {
                     navElements.map((element) => {
                         return (
                             <NavigationItem
@@ -87,7 +106,7 @@ const Header = () => {
                                 shoulRenderDescription={true} />
                         )
                     })
-                }
+                } */}
             {/* <div>Animal Caunt: {data} </div> */}
             <div>Max. Characters: {data} </div>
             </div>
